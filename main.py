@@ -2,6 +2,8 @@ import streamlit as st
 
 from supabase import create_client, Client
 
+st.title(Health Portal)   
+
 # Initialize connection.
 # Uses st.cache_resource to only run once.
 @st.cache_resource
