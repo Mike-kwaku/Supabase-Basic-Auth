@@ -28,12 +28,12 @@ st.title("Health Portal")
  #   st.write(f"{row['customer_name']} visited us on :{row['recent_doctor_visit']}:")
 
 col1, col2 = st.columns(2)
-   with col1:
+with col1:
         with st.expander('Login'):
             email = st.text_input('Email', key='login_email')
             password = st.text_input('Password', type='password', key='login_password')
             login_btn = st.button('Login', on_click=login, args=(email, password))
-    with col2:
+with col2:
         with st.expander('Sign Up'):
             new_email = st.text_input('Email', key='signup_email')
             new_password = st.text_input('Password', type='password', key='signup_password')
