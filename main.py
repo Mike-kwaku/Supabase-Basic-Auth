@@ -15,6 +15,21 @@ st.title("Health Portal")
 
 # supabase = init_connection()
 
+def login(email, password):
+    data = supabase.auth.sign_in_with_password({"email": email, "password": password})
+    if 'user' in data:
+        st.session_state.user = data['user']
+        st.success('This is a success message!', icon="✅")
+    else:
+        st.warning("Login failed. check your credentials.")
+
+def signup(email, password):  
+     res = supabase.auth.sign_up({"email": email, "password": password})
+     if res['user']:
+        st.success("🎉 Signup successful!")
+     else:
+        st.warning("Signup failed. Please try again.")
+
 # Perform query.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 #@st.cache_resource(ttl=600)
