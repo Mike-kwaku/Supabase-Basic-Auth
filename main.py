@@ -28,7 +28,7 @@ def signup(email, password):
      if res['user']:
         st.toast("🎉 Signup successful!")
         time.sleep(.5)
-        st.write("Fill the login form with your credentials")
+        st.toast("Fill the login form with your credentials")
      else:
         st.warning("Signup failed. Please try again.")
 
