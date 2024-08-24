@@ -7,13 +7,13 @@ st.title("Health Portal")
 
 # Initialize connection.
 # Uses st.cache_resource to only run once.
-# @st.cache_resource
-#def init_connection():
- #   url = st.secrets["SUPABASE_URL"]
-  #  key = st.secrets["SUPABASE_KEY"]
-   # return create_client(url, key)
+@st.cache_resource
+def init_connection():
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+    return create_client(url, key)
 
-# supabase = init_connection()
+supabase = init_connection()
 
 def login(email, password):
     data = supabase.auth.sign_in_with_password({"email": email, "password": password})
@@ -31,18 +31,6 @@ def signup(email, password):
         st.write("Fill the login form with your credentials")
      else:
         st.warning("Signup failed. Please try again.")
-
-# Perform query.
-# Uses st.cache_data to only rerun when the query changes or after 10 min.
-#@st.cache_resource(ttl=600)
-#def run_query():
- #   return supabase.table("health").select("*").execute()
-
-#rows = run_query()
-
-# Print results.
-#for row in rows.data:
- #   st.write(f"{row['customer_name']} visited us on :{row['recent_doctor_visit']}:")
 
 col1, col2 = st.columns(2)
 with col1:
