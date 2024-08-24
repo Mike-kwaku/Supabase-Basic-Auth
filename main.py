@@ -19,8 +19,9 @@ supabase = init_connection()
 def login(email, password):
     data = supabase.auth.sign_in_with_password({"email": email, "password": password})
     res = str(data)
-    if 'user' in res:
-        st.session_state.user = res['user']
+    ans =json.dumps(res)
+    if 'user' in ans:
+        st.session_state.user = ans['user']
         st.switch("pages/home.py")
     else:
         st.warning("Login failed. check your credentials.")
