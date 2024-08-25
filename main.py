@@ -26,7 +26,7 @@ def login(email, password):
 
 def signup(email, password):  
      data = supabase.auth.sign_up({"email": email, "password": password})
-     if data.user
+     if data.user:
         st.toast("🎉 Signup successful!")
         time.sleep(.5)
         st.toast("Fill the login form with your credentials")
