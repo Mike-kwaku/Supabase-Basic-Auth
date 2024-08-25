@@ -18,9 +18,7 @@ supabase = init_connection()
 
 def login(email, password):
     data = supabase.auth.sign_in_with_password({"email": email, "password": password})
-    res = str(data)
-    ans =json.dumps(res)
-    if 'user' in ans:
+    if 'user' in data:
         st.session_state.user = ans['user']
         st.switch("pages/home.py")
     else:
@@ -28,8 +26,7 @@ def login(email, password):
 
 def signup(email, password):  
      res = supabase.auth.sign_up({"email": email, "password": password})
-     data = str(res)
-     if data['user']:
+     if res['user']:
         st.toast("🎉 Signup successful!")
         time.sleep(.5)
         st.toast("Fill the login form with your credentials")
