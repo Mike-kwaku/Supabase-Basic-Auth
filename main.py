@@ -20,7 +20,7 @@ def login(email, password):
     data = supabase.auth.sign_in_with_password({"email": email, "password": password})
     if data.user:
         st.session_state.user = data.user
-        st.switch("pages/home.py")
+        st.switch_page("pages/home.py")
     else:
         st.warning("Login failed. check your credentials.")
 
