@@ -1,1 +1,1 @@
-# Supabase-streamlit
+# Supabase-streamlit Basic Authentication   
